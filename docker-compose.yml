@@ -388,6 +388,8 @@ services:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
         - "${VARNISH_BACKEND_PORT}:81"
+        - "${NGINX_DEV_HOST_HTTP_PORT}:82"
+        - "${NGINX_DEV_HOST_HTTPS_PORT}:444"
       depends_on:
         - php-fpm
       networks:
@@ -473,6 +475,26 @@ services:
         - ${MYSQL_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
         - "${MYSQL_PORT}:3306"
+      networks:
+        - backend
+
+### MySQL DEV ################################################
+    mysql_dev:
+      build:
+        context: ./mysql_dev
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_DATABASE=${MYSQL_DEV_DATABASE}
+        - MYSQL_USER=${MYSQL_DEV_USER}
+        - MYSQL_PASSWORD=${MYSQL_DEV_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${WORKSPACE_TIMEZONE}
+      volumes:
+        - ${DEV_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_DEV_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_DEV_PORT}:3306"
       networks:
         - backend
 
