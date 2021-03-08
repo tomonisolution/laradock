@@ -1,5 +1,10 @@
 # Overview
 
+Clone
+```
+git clone -b tomoniglobal.service https://github.com/tomonisolution/laradock.git
+```
+
 Update nginx sites `prod.conf`, `dev.conf`
 ```
 ...
