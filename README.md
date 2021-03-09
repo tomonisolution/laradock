@@ -12,6 +12,19 @@ root /var/www/dev/_work/tomoni-service/tomoni-service/public;
 ...
 ```
 
+Update laravel-horizon `listen-*.conf` listens
+```
+...
+command=php /var/www/dev/_work/tomoni-service/tomoni-service/artisan rabbitevents:listen Accounting.#
+...
+```
+Consider to update laravel-horizon `run-horizon.conf` runners
+```
+...
+autostart=true
+...
+```
+
 Add DNS `/etc/hosts`
 ```
 ...
