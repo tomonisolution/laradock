@@ -749,6 +749,25 @@ services:
       networks:
         - backend
 
+### RabbitMQ DEV #############################################
+    rabbitmq_dev:
+      build: ./rabbitmq_dev
+      ports:
+        - "${RABBITMQ_DEV_NODE_HOST_PORT}:5672"
+        - "${RABBITMQ_DEV_MANAGEMENT_HTTP_HOST_PORT}:15672"
+        - "${RABBITMQ_DEV_MANAGEMENT_HTTPS_HOST_PORT}:15671"
+      privileged: true
+      environment:
+        - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEV_DEFAULT_USER}
+        - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEV_DEFAULT_PASS}
+      hostname: laradock-rabbitmq_dev
+      volumes:
+        - ${DEV_DATA_PATH_HOST}/rabbitmq:/var/lib/rabbitmq
+      depends_on:
+        - php-fpm
+      networks:
+        - backend
+
 ### Mercure #############################################
     mercure:
       build: ./mercure
