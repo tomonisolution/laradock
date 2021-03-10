@@ -2,45 +2,32 @@
 
 Clone
 ```
-git clone -b tomoniglobal.service https://github.com/tomonisolution/laradock.git
-```
-
-Update nginx sites `prod.conf`, `dev.conf`
-```
-...
-root /var/www/dev/_work/tomoni-service/tomoni-service/public;
-...
-```
-
-Update laravel-horizon `listen-*.conf` listens
-```
-...
-command=php /var/www/dev/_work/tomoni-service/tomoni-service/artisan rabbitevents:listen Accounting.#
-...
-```
-Consider to update laravel-horizon `run-horizon.conf` runners
-```
-...
-autostart=true
-...
+git clone -b tomoniglobal.service.app https://github.com/tomonisolution/laradock.git
 ```
 
 Add DNS `/etc/hosts`
 ```
 ...
-127.0.0.1 dev.local
-127.0.0.1 prod.local
+127.0.0.1 admin.dev.local
+127.0.0.1 admin.prod.local
+127.0.0.1 customer.dev.local
+127.0.0.1 customer.prod.local
 ```
 
 Structure folders
 ```bash
 ~/laradock
-~/web/prod  # action runner production here
-~/web/dev # action runner development here
+~/web/admin-dev
+~/web/admin-prod
+~/web/customer-dev
+~/web/customer-prod
 ```
 
 Default ports
 ```
-Development port :82
-Production port :80
+Development customer port :82
+Production customer port :80
+
+Development admin port :84
+Production admin port :83
 ```

@@ -388,8 +388,12 @@ services:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
         - "${VARNISH_BACKEND_PORT}:81"
-        - "${NGINX_DEV_HOST_HTTP_PORT}:82"
-        - "${NGINX_DEV_HOST_HTTPS_PORT}:444"
+        - "${NGINX_CUSTOMER_DEV_HOST_HTTP_PORT}:82"
+        - "${NGINX_CUSTOMER_DEV_HOST_HTTPS_PORT}:444"
+        - "${NGINX_ADMIN_HOST_HTTP_PORT}:83"
+        - "${NGINX_ADMIN_HOST_HTTPS_PORT}:445"
+        - "${NGINX_ADMIN_DEV_HOST_HTTP_PORT}:84"
+        - "${NGINX_ADMIN_DEV_HOST_HTTPS_PORT}:446"
       depends_on:
         - php-fpm
       networks:
