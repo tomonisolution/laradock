@@ -406,8 +406,6 @@ services:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
         - "${VARNISH_BACKEND_PORT}:81"
-        - "${NGINX_DEV_HOST_HTTP_PORT}:82"
-        - "${NGINX_DEV_HOST_HTTPS_PORT}:444"
       depends_on:
         - php-fpm
       networks:
@@ -497,23 +495,123 @@ services:
       networks:
         - backend
 
-### MySQL DEV ################################################
-    mysql_dev:
+### MySQL AUTH ################################################
+    mysql_auth:
       build:
-        context: ./mysql_dev
+        context: ./mysql_auth
         args:
           - MYSQL_VERSION=${MYSQL_VERSION}
       environment:
-        - MYSQL_DATABASE=${MYSQL_DEV_DATABASE}
-        - MYSQL_USER=${MYSQL_DEV_USER}
-        - MYSQL_PASSWORD=${MYSQL_DEV_PASSWORD}
+        - MYSQL_DATABASE=${MYSQL_AUTH_DATABASE}
+        - MYSQL_USER=${MYSQL_AUTH_USER}
+        - MYSQL_PASSWORD=${MYSQL_AUTH_PASSWORD}
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - TZ=${WORKSPACE_TIMEZONE}
       volumes:
-        - ${DEV_DATA_PATH_HOST}/mysql:/var/lib/mysql
-        - ${MYSQL_DEV_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+        - ${AUTH_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_AUTH_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
-        - "${MYSQL_DEV_PORT}:3306"
+        - "${MYSQL_AUTH_PORT}:3306"
+      networks:
+        - backend
+
+### MySQL ORDER ################################################
+    mysql_order:
+      build:
+        context: ./mysql_order
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_DATABASE=${MYSQL_ORDER_DATABASE}
+        - MYSQL_USER=${MYSQL_ORDER_USER}
+        - MYSQL_PASSWORD=${MYSQL_ORDER_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${WORKSPACE_TIMEZONE}
+      volumes:
+        - ${ORDER_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_ORDER_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_ORDER_PORT}:3306"
+      networks:
+        - backend
+
+### MySQL ACCOUNTING ################################################
+    mysql_accounting:
+      build:
+        context: ./mysql_accounting
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_DATABASE=${MYSQL_ACCOUNTING_DATABASE}
+        - MYSQL_USER=${MYSQL_ACCOUNTING_USER}
+        - MYSQL_PASSWORD=${MYSQL_ACCOUNTING_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${WORKSPACE_TIMEZONE}
+      volumes:
+        - ${ACCOUNTING_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_ACCOUNTING_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_ACCOUNTING_PORT}:3306"
+      networks:
+        - backend
+        
+### MySQL PRODUCT ################################################
+    mysql_product:
+      build:
+        context: ./mysql_product
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_DATABASE=${MYSQL_PRODUCT_DATABASE}
+        - MYSQL_USER=${MYSQL_PRODUCT_USER}
+        - MYSQL_PASSWORD=${MYSQL_PRODUCT_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${WORKSPACE_TIMEZONE}
+      volumes:
+        - ${PRODUCT_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_PRODUCT_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_PRODUCT_PORT}:3306"
+      networks:
+        - backend
+
+### MySQL NOTIFICATION ################################################
+    mysql_notification:
+      build:
+        context: ./mysql_notification
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_DATABASE=${MYSQL_NOTIFICATION_DATABASE}
+        - MYSQL_USER=${MYSQL_NOTIFICATION_USER}
+        - MYSQL_PASSWORD=${MYSQL_NOTIFICATION_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${WORKSPACE_TIMEZONE}
+      volumes:
+        - ${NOTIFICATION_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_NOTIFICATION_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_NOTIFICATION_PORT}:3306"
+      networks:
+        - backend
+
+### MySQL WAREHOUSE ################################################
+    mysql_warehouse:
+      build:
+        context: ./mysql_warehouse
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_DATABASE=${MYSQL_WAREHOUSE_DATABASE}
+        - MYSQL_USER=${MYSQL_WAREHOUSE_USER}
+        - MYSQL_PASSWORD=${MYSQL_WAREHOUSE_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${WORKSPACE_TIMEZONE}
+      volumes:
+        - ${WAREHOUSE_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_WAREHOUSE_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_WAREHOUSE_PORT}:3306"
       networks:
         - backend
 
@@ -793,7 +891,7 @@ services:
         - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       hostname: laradock-rabbitmq
       volumes:
-        - ${DATA_PATH_HOST}/rabbitmq:/var/lib/rabbitmq
+        - ${DATA_PATH_HOST}/rabbitmq:/var/lib/rabbitmq/mnesia
       depends_on:
         - php-fpm
       networks:
