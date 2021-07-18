@@ -409,8 +409,22 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases: 
+            - auth.tomoniglobal.local
+            - accounting.tomoniglobal.local
+            - order.tomoniglobal.local
+            - product.tomoniglobal.local
+            - notification.tomoniglobal.local
+            - warehouse.tomoniglobal.local
+        backend:
+          aliases: 
+            - auth.tomoniglobal.local
+            - accounting.tomoniglobal.local
+            - order.tomoniglobal.local
+            - product.tomoniglobal.local
+            - notification.tomoniglobal.local
+            - warehouse.tomoniglobal.local
 
 ### Blackfire ########################################
     blackfire:
