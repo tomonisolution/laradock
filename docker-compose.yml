@@ -411,6 +411,7 @@ services:
       networks:
         frontend:
           aliases: 
+            - admin.tomoniglobal.local
             - auth.tomoniglobal.local
             - accounting.tomoniglobal.local
             - order.tomoniglobal.local
@@ -419,6 +420,7 @@ services:
             - warehouse.tomoniglobal.local
         backend:
           aliases: 
+            - admin.tomoniglobal.local
             - auth.tomoniglobal.local
             - accounting.tomoniglobal.local
             - order.tomoniglobal.local
@@ -900,9 +902,6 @@ services:
         - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"
         - "${RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT}:15671"
       privileged: true
-      environment:
-        - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
-        - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       hostname: laradock-rabbitmq
       volumes:
         - ${DATA_PATH_HOST}/rabbitmq:/var/lib/rabbitmq/mnesia
