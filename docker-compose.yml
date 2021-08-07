@@ -411,22 +411,22 @@ services:
       networks:
         frontend:
           aliases: 
-            - admin.tomoniglobal.local
-            - auth.tomoniglobal.local
-            - accounting.tomoniglobal.local
-            - order.tomoniglobal.local
-            - product.tomoniglobal.local
-            - notification.tomoniglobal.local
-            - warehouse.tomoniglobal.local
+            - dev-admin.tomonisolution.com
+            - dev-auth.tomonisolution.com
+            - dev-accounting.tomonisolution.com
+            - dev-order.tomonisolution.com
+            - dev-product.tomonisolution.com
+            - dev-notification.tomonisolution.com
+            - dev-warehouse.tomonisolution.com
         backend:
           aliases: 
-            - admin.tomoniglobal.local
-            - auth.tomoniglobal.local
-            - accounting.tomoniglobal.local
-            - order.tomoniglobal.local
-            - product.tomoniglobal.local
-            - notification.tomoniglobal.local
-            - warehouse.tomoniglobal.local
+            - dev-admin.tomonisolution.com
+            - dev-auth.tomonisolution.com
+            - dev-accounting.tomonisolution.com
+            - dev-order.tomonisolution.com
+            - dev-product.tomonisolution.com
+            - dev-notification.tomonisolution.com
+            - dev-warehouse.tomonisolution.com
 
 ### Blackfire ########################################
     blackfire:
