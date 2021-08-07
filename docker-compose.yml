@@ -411,6 +411,7 @@ services:
       networks:
         frontend:
           aliases: 
+            - dev-customer.tomonisolution.com
             - dev-admin.tomonisolution.com
             - dev-auth.tomonisolution.com
             - dev-accounting.tomonisolution.com
@@ -420,6 +421,7 @@ services:
             - dev-warehouse.tomonisolution.com
         backend:
           aliases: 
+            - dev-customer.tomonisolution.com
             - dev-admin.tomonisolution.com
             - dev-auth.tomonisolution.com
             - dev-accounting.tomonisolution.com
