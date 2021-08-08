@@ -411,20 +411,24 @@ services:
       networks:
         frontend:
           aliases: 
-            - auth.tomoniglobal.local
-            - accounting.tomoniglobal.local
-            - order.tomoniglobal.local
-            - product.tomoniglobal.local
-            - notification.tomoniglobal.local
-            - warehouse.tomoniglobal.local
+            - dev-customer.tomonisolution.com
+            - dev-admin.tomonisolution.com
+            - dev-auth.tomonisolution.com
+            - dev-accounting.tomonisolution.com
+            - dev-order.tomonisolution.com
+            - dev-product.tomonisolution.com
+            - dev-notification.tomonisolution.com
+            - dev-warehouse.tomonisolution.com
         backend:
           aliases: 
-            - auth.tomoniglobal.local
-            - accounting.tomoniglobal.local
-            - order.tomoniglobal.local
-            - product.tomoniglobal.local
-            - notification.tomoniglobal.local
-            - warehouse.tomoniglobal.local
+            - dev-customer.tomonisolution.com
+            - dev-admin.tomonisolution.com
+            - dev-auth.tomonisolution.com
+            - dev-accounting.tomonisolution.com
+            - dev-order.tomonisolution.com
+            - dev-product.tomonisolution.com
+            - dev-notification.tomonisolution.com
+            - dev-warehouse.tomonisolution.com
 
 ### Blackfire ########################################
     blackfire:
@@ -900,9 +904,6 @@ services:
         - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"
         - "${RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT}:15671"
       privileged: true
-      environment:
-        - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
-        - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       hostname: laradock-rabbitmq
       volumes:
         - ${DATA_PATH_HOST}/rabbitmq:/var/lib/rabbitmq/mnesia
