@@ -409,8 +409,18 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases: 
+            - dev-customer.tomonisolution.com
+            - dev-admin.tomonisolution.com
+        backend:
+          aliases: 
+            - dev-auth.tomonisolution.com
+            - dev-accounting.tomonisolution.com
+            - dev-order.tomonisolution.com
+            - dev-product.tomonisolution.com
+            - dev-notification.tomonisolution.com
+            - dev-warehouse.tomonisolution.com
 
 ### Blackfire ########################################
     blackfire:
