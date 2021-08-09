@@ -411,20 +411,20 @@ services:
       networks:
         frontend:
           aliases: 
-            - dev-auth.tomoniglobal.test
-            - dev-accounting.tomoniglobal.test
-            - dev-order.tomoniglobal.test
-            - dev-product.tomoniglobal.test
-            - dev-notification.tomoniglobal.test
-            - dev-warehouse.tomoniglobal.test
+            - auth.tomoniglobal.test
+            - accounting.tomoniglobal.test
+            - order.tomoniglobal.test
+            - product.tomoniglobal.test
+            - notification.tomoniglobal.test
+            - warehouse.tomoniglobal.test
         backend:
           aliases: 
-            - dev-auth.tomoniglobal.test
-            - dev-accounting.tomoniglobal.test
-            - dev-order.tomoniglobal.test
-            - dev-product.tomoniglobal.test
-            - dev-notification.tomoniglobal.test
-            - dev-warehouse.tomoniglobal.test
+            - auth.tomoniglobal.test
+            - accounting.tomoniglobal.test
+            - order.tomoniglobal.test
+            - product.tomoniglobal.test
+            - notification.tomoniglobal.test
+            - warehouse.tomoniglobal.test
 
 ### Blackfire ########################################
     blackfire:

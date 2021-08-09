@@ -2,19 +2,19 @@
 
 Clone
 ```
-git clone -b tomoniglobal https://github.com/tomonisolution/laradock.git
+git clone -b tomoniglobal.local https://github.com/tomonisolution/laradock.git
 ```
 
 Add DNS `/etc/hosts`
 ```
 ...
-127.0.0.1 auth.tomoniglobal.local
-127.0.0.1 accounting.tomoniglobal.local
-127.0.0.1 order.tomoniglobal.local
-127.0.0.1 product.tomoniglobal.local
-127.0.0.1 warehouse.tomoniglobal.local
-127.0.0.1 notification.tomoniglobal.local
-127.0.0.1 app.tomoniglobal.local
+
+127.0.0.1 auth.tomoniglobal.test
+127.0.0.1 accounting.tomoniglobal.test
+127.0.0.1 order.tomoniglobal.test
+127.0.0.1 product.tomoniglobal.test
+127.0.0.1 notification.tomoniglobal.test
+127.0.0.1 warehouse.tomoniglobal.test
 ```
 
 Structure folders
@@ -26,7 +26,6 @@ Structure folders
 ~/web/product
 ~/web/notification
 ~/web/warehouse
-~/web/app
 ```
 
 Up
