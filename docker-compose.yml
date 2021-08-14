@@ -411,16 +411,16 @@ services:
       networks:
         frontend:
           aliases: 
-            - dev-customer.tomonisolution.com
-            - dev-admin.tomonisolution.com
+            - customer.tomonisolution.com
+            - admin.tomonisolution.com
         backend:
           aliases: 
-            - dev-auth.tomonisolution.com
-            - dev-accounting.tomonisolution.com
-            - dev-order.tomonisolution.com
-            - dev-product.tomonisolution.com
-            - dev-notification.tomonisolution.com
-            - dev-warehouse.tomonisolution.com
+            - prod-auth.tomonisolution.com
+            - prod-accounting.tomonisolution.com
+            - prod-order.tomonisolution.com
+            - prod-product.tomonisolution.com
+            - prod-notification.tomonisolution.com
+            - prod-warehouse.tomonisolution.com
 
 ### Blackfire ########################################
     blackfire:
