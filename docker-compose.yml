@@ -421,6 +421,7 @@ services:
             - prod-product.tomonisolution.com
             - prod-notification.tomonisolution.com
             - prod-warehouse.tomonisolution.com
+            - saikoexpress.com
 
 ### Blackfire ########################################
     blackfire:
@@ -502,6 +503,26 @@ services:
         - ${MYSQL_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
         - "${MYSQL_PORT}:3306"
+      networks:
+        - backend
+
+### MySQL SK ################################################
+    mysql_sk:
+      build:
+        context: ./mysql_sk
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_DATABASE=${MYSQL_SK_DATABASE}
+        - MYSQL_USER=${MYSQL_SK_USER}
+        - MYSQL_PASSWORD=${MYSQL_SK_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${WORKSPACE_TIMEZONE}
+      volumes:
+        - ${SK_DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_SK_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_SK_PORT}:3306"
       networks:
         - backend
 
