@@ -30,5 +30,5 @@ Structure folders
 
 Up
 ```bash
-docker-compose up -d mysql_auth mysql_accounting mysql_order mysql_product mysql_notification mysql_warehouse nginx phpmyadmin workspace rabbitmq redis laravel-horizon
+docker-compose up -d mysql nginx phpmyadmin workspace redis
 ```
