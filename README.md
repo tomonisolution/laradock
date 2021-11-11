@@ -30,5 +30,5 @@ Structure folders
 
 Up
 ```bash
-docker-compose up -d mysql nginx phpmyadmin workspace redis
+docker-compose up -d nginx mysql redis workspace phpmyadmin meilisearch
 ```
