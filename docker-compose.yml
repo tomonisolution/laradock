@@ -420,7 +420,7 @@ services:
             - accounting.tomoniglobal.test
             - order.tomoniglobal.test
             - product.tomoniglobal.test
-            - notification.tomoniglobal.test
+            - helper.tomoniglobal.test
             - warehouse.tomoniglobal.test
         backend:
           aliases: 
@@ -428,7 +428,7 @@ services:
             - accounting.tomoniglobal.test
             - order.tomoniglobal.test
             - product.tomoniglobal.test
-            - notification.tomoniglobal.test
+            - helper.tomoniglobal.test
             - warehouse.tomoniglobal.test
 
 ### OpenResty Server #########################################
