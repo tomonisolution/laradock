@@ -414,8 +414,22 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases: 
+            - auth.tomoniglobal.test
+            - accounting.tomoniglobal.test
+            - order.tomoniglobal.test
+            - product.tomoniglobal.test
+            - helper.tomoniglobal.test
+            - warehouse.tomoniglobal.test
+        backend:
+          aliases: 
+            - auth.tomoniglobal.test
+            - accounting.tomoniglobal.test
+            - order.tomoniglobal.test
+            - product.tomoniglobal.test
+            - helper.tomoniglobal.test
+            - warehouse.tomoniglobal.test
 
 ### OpenResty Server #########################################
     openresty:
