@@ -13,7 +13,7 @@ Add DNS `/etc/hosts`
 127.0.0.1 accounting.tomoniglobal.test
 127.0.0.1 order.tomoniglobal.test
 127.0.0.1 product.tomoniglobal.test
-127.0.0.1 notification.tomoniglobal.test
+127.0.0.1 helper.tomoniglobal.test
 127.0.0.1 warehouse.tomoniglobal.test
 ```
 
@@ -24,7 +24,7 @@ Structure folders
 ~/web/accounting
 ~/web/order
 ~/web/product
-~/web/notification
+~/web/helper
 ~/web/warehouse
 ```
 
