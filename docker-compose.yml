@@ -435,8 +435,17 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases: 
+            - tomonisolution.com
+        backend:
+          aliases: 
+            - dev-auth.tomonisolution.com
+            - dev-accounting.tomonisolution.com
+            - dev-order.tomonisolution.com
+            - dev-product.tomonisolution.com
+            - dev-helper.tomonisolution.com
+            - dev-warehouse.tomonisolution.com
 
 ### OpenResty Server #########################################
     openresty:
